@@ -6,14 +6,15 @@ library(shinyClip)
 shinyUI(
   pageWithSidebar(
     # Application title
-    headerPanel("Clip"),
+    headerPanel("Shiny Helper"),
 
     sidebarPanel(
+      selectInput("sel", "Select Widget Type:", c("Slider", "Text Input", "Date Picker"), selectize=FALSE),
       sliderInput("slider", "Slider:", 0, 100, 1),
       helpText(HTML(""))
     ),
     mainPanel(
-      # Show a simple table.
+      plotOutput("plot", clickId="plotClick"),
       clippyOutput("clip")
     )
   ))

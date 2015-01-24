@@ -7,7 +7,6 @@ HTMLWidgets.widget({
       var agent = null;
       var initializing = false;
 
-
       return {
         do: function(act){
           if (!agent){
@@ -19,6 +18,9 @@ HTMLWidgets.widget({
         init: function(agt){
           initializing = false;
           agent = agt;
+
+          $(el).data('shinyClip-agent', agent);
+
           while (actionStack.length > 0){
             var a = actionStack.shift();
             a(agent);
@@ -58,3 +60,23 @@ HTMLWidgets.widget({
     console.log("Resize");
   }
 })
+
+
+Shiny.addCustomMessageHandler('shinyClip', function(data) {
+  var agt = $('#'+data.id).data('shinyClip-agent');
+
+  if (!agt){
+    // Agent not ready yet.
+    return
+  }
+
+  agt.stop();
+
+  if (data.speak){
+    agt.speak(data.speak);
+  }
+
+  if (data.moveTo){
+    agt.moveTo.apply(agt, data.moveTo);
+  }
+});
