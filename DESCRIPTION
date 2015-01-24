@@ -1,0 +1,10 @@
+Package: shinyClip
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.0.1
+Date: 2015-01-23
+Author: Your name goes here
+Maintainer: Jeff Allen <cran@trestletechnology.net>
+Description: More about what it does (maybe more than one line)
+License: What license is it under?
+LazyData: TRUE

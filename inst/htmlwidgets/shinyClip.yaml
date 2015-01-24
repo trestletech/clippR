@@ -1,0 +1,8 @@
+dependencies:
+  - name: shinyClip
+    version: 0.0.1
+    src: htmlwidgets/lib/clippy.js
+    script:
+      - clippy.min.js
+    stylesheet:
+      - clippy.css
